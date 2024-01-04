@@ -1,0 +1,272 @@
+21-11-2023	
+=========
+
+
+CORE JAVA
+=========
+
+SPRINGBOOT
+==========
+
+SQL:
+====
+
+EXTRA
+======
+
+CORE JAVA
+=========
+1]WHAT IS THE DIFFERENCE BETWEEN HASHMAP AND HASHTABLE
+
+2]WHAT IS THE DIFFERNCE BETWEEN METHOD OVERLOADING AND OVERRIDING
+
+3]WHICH VERSION OF JAVA WORKED ON
+
+4]WHAT IS THE DIFFERENCE BETWEEN SAID AND UNSAID EXCEPTION IN JAVA
+
+
+SPRINGBOOT
+==========
+1] WHAT IS THE DIFFERENCE BETWEEN @CONTROLLER AND @RESTCONTROLLER
+
+2] HOW TO CONFIGURE DATASOURCE PROPERTES IN SPRINGBOOT
+
+3] WHAT IS ACTUATORS
+
+4] HOW CAN YOU SETUP SPRINGBOOT APP WITH FROM SCRATCH
+
+5] ARE YOU DESIGNED ANY REST END POING IN YOUR PROJECT
+
+6] WHY WE USE @COMPONENT SCAN IN OUR APPLICATION[I LISENDED LIKE @component]
+
+7] CORS ORIGINE RESOURCES IN SPRINGBOOT	XXXXXXXXXXXXXXXXXX
+
+EXTRA
+======
+1]WHAT IS YOUR ROLES AND RESPONSIBILITIES
+
+2]CAN YOU BRIEFLY INTODUCE YOURSELF
+
+3]TELL ME ABOUT YOUR SKILLSET
+
+
+=========
+22-11-2023
+==========
+
+CORE JAVA
+=========
+1]WHAT IS THE DIFFERENCE BEYTWEEN LIST AND SET
+
+2]WHAT IS THE DIFFERENCE BETWEEN Comparable and Comparator
+
+3]WHAT IS THE EXCEPTION
+
+4]WHAT ARE THE TYPES OF EXCEPTIONS IN JAVA
+
+5]TRY 10/0   catch Exception e catch NullPointerException e	catch ArithematicException e
+
+6]TELL ME WHAT ARE ACCESS SPECIFIERS[PUBLIC, PRIVATE, PROTECTED,DEFAULT]
+
+7]
+
+
+
+
+SPRINGBOOT
+==========
+1]		WHAT IS @SpringBootApplication 
+
+2]		WHAT Are the key components available in sprinboot
+
+3] 		HOW CAN WE USE OTHER SERVER IN SPRINGBOOT [LIKE JETTY AND NETTY LIKE THAT....]
+
+4] 		What is springBoot CLI[COMMANDLINE INTERFACE]
+MYSQL
+=====
+1] 	RETRIEVE SECOND HIGEST PERCENTE OF THE STUDENT
+
+
+PROGRAM
+=======
+Swap without using third variable A & B
+
+EXTRA
+======
+1]	Which  IDE'S are using in your project  ==> eclipse, sts, intellij
+
+
+
+TCS
+===
+CORE JAVA
+=========
+
+SPRINGBOOT
+==========
+1 ]	HOW TO HANDLE THE EXCEPTION IN YOUR PROJECT
+
+2 ]	HOW YOUR PROVIDING SECURITY IN YOUR PROJECT
+
+3 ] HOW YOUR CONNECT WITH THE DATABASES IN SPRING BOOT
+
+SQL:
+====
+
+EXTRA
+======
+WHAT IS THE ROLES AND RESPONSIBILITES
+
+TELL ME AGILE METHODOLOGY
+
+
+24-11-2023
+==========
+
+CORE JAVA
+=========
+1]CAN YOU TELL ME WHAT IS CHECKE EXCEPTIONS AND UN-CHECKED EXCEPTIONS
+
+2]HOW YOU WILL CREATE CUSTOME EXCEPTIONS
+
+3]WHAT ABOUT CUSTOME RUNTIME EXCEPTION
+
+4]WHAT IS STRING MUTABILITY
+
+5]HOW WE WILL CREATE MUTABLE CLASSes
+
+6]What are the java8 features
+
+7]Difference between map and flatMap
+
+8]What is the difference between predicate and funtion
+
+9]What are the legacy classes in java[vector, stack, hashtable, properties]
+
+10]Internal working of hashmap
+
+11]what will happening if i put key already existing in the map
+
+12]What is the difference between arrayList And linkedList
+
+
+SPRINGBOOT
+==========
+1] What is Actuators in springboot.
+2] What are the annotations are used in in springboot
+3] what is @SpringBootApplication
+4] How your connnect with DB.
+5] DIFF B/ POST AND PUT  in rest API
+6] What is the status code of 201,200,401,500
+7] During the Project time what are the challenges your faced.
+
+SQL:
+====
+01] Diff b/w table and view
+02] what is right join
+
+EXTRA
+======
+CAN YOU EXPALIN YOURSELF
+
+27-11-2023
+==========
+
+
+CORE JAVA
+=========
+01]What is the difference between ArrayList and LinkedList
+
+02]Internal working  of HashMap
+
+03]What is the interfaces what is the use of interfaces in java
+
+04]Why string is immutable
+
+05]What is Optional class
+
+06]What is the use of funtional interface
+
+07]Can we override the static method
+
+08]What is method overriding 
+
+SPRINGBOOT
+==========
+what is DI
+SQL:
+====
+programming
+===========
+Sort the elements in ascnding Order
+
+
+
+29-11-2023
+==========
+Why Set is not allow duplicates
+
+what is the use of instanceOf method
+
+
+
+05-12-2023
+===========
+
+CORE JAVA
+=========
+WHAT IS POLIMORPHISM IN JAVA
+HOW CAN WE CREATE CUSTOM EXCEPTION
+
+SPRINGBOOT
+==========
+TELL ME DATA JPA 5-PREDIFINED METHODS
+
+HOW YOUR USING PAYMENT GATEWAY IN YOUR PROJECT
+
+HOW YOUR USING GOOGLE MAPS
+
+What is the difference between findById and getById
+
+SQL:
+====
+
+
+
+CORE JAVA
+=========
+
+SPRINGBOOT
+==========
+what is CIRCUIT BREAKER
+
+WHAT IS FAULT TOLERENCE
+
+
+SQL:
+====
+
+
+-----------------------------------------------------------------------
+DELOITE
+--------------------------------------------------------------------
+1)WHAT IS ABSTRACTION CLASS
+2)WHAT IS ENCAPSULATION
+3)HOW WE CAN SAVE AND UPDATE IN JPA REPOSITORY
+4)WHAT ARE THE MAJOR CHALLENGES U FACED IN YOUR PROJECT
+5)WHAT IS THE DIFFERENCE BETWEEN HASHSET & HASHMAP
+6)IF ONE LOGIC YOU DONT KNOW HOW YOU CAN BROWSE OR SEARCH
+7)2ND HIGHEST SALARY IN MY SQL
+--------------------------------------------------------------------
+[04/01/2024]Accenture
+---------------------------------------------------------------------
+1) What is String constant pool
+2)how many ways we can create a String
+3)What are the new features is added in java 1.8
+
+spring boot
+------------
+01]in actuators how to shutdown our application
+02]What are the annotations available in spring boot except steriotype annotation
+03]
+

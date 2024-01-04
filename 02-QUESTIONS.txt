@@ -1,0 +1,721 @@
+1. What is the superclass of all classes in java?
+2. What are the methods in object class?
+3. What is diamond problem in inheritence?
+4. Difference between Interface & Abstraction?
+5. Hashmap internal working?
+6. Explain Internal flow of ArrayList
+7. Explain about Method overriding & method overloading?
+8. Explain @Authoriad,@Qualifier?
+9. What is Dependency injection?
+10. Singleton design pattern -singleton class code?
+11. How we can achieve obstraction?
+12. what is deadlock in multithreading?
+13. Explain about Thread life cycle
+14. Can we create immutable object?
+15. Explain static polymorphysim & dynamic polymorphysim?
+16. What is the use of static?
+17. What is data inconsistancy problem?
+18. Differences between List & Set?
+19. Explain about Bean lifecycle
+20. What is Ioc?
+21. What is dependency injection?
+22. what are different types of dependency injections?
+23. What are the different types of bean scopes in spring
+24. what is the use of @Component scan?
+	            @Configuration?
+		    @Enable auto configuration?
+25. Explain about @spring boot application?
+26. Differences between setter injection and constructor injection?
+27. Explain architecture of microservices?
+28. Explain spring boot application internal flow?
+29. What is Actuator in spring boot
+30. Difference between west controller and controller?
+31. Whar are different HTTP methods?
+32. Differnces between put and post method?
+33. Explain about swagger?
+34. How can you apply spring security to the application?
+35. Explain about O-Auth 2 security?
+36. How we can handle the exceptions?
+37. Differences between HashSet and HashMap?
+38. Differences between ArrayList and LinkedList?
+39. Differences between Comparable and Comparator?
+40. What are the java 8 features?
+41. What is the use of lamda expressions?
+42. What is funtional interface?
+43. Differences between funtion and predicate?
+44. Explain about streams?
+45. Differences between stream api and streams?
+46. Differences between string, string buffer and string builder?
+47. What is string constant pool?
+48. What is reflection in java?
+49. What is cloning in java?
+50. Write a test case to saveEmployee by using mockito.
+
+
+
+==================================================================================================
+1. What is the superclass of all classes in java?
+=================================================
+Object class
+
+========================================
+2. What are the methods in object class?
+========================================
++-----------------------------+----------------------------------------------------+
+| Method                      | Description                                        |
++-----------------------------+----------------------------------------------------+
+| equals(Object obj)          | Compares the equality of two objects.              |
+| hashCode()                  | Returns a hash code value for the object.          |
+| toString()                  | Returns a string representation of the object.     |
+| getClass()                  | Returns the runtime class of the object.           |
+| clone()                     | Creates and returns a copy of the object.         |
+| notify()                    | Used for inter-thread communication.               |
+| notifyAll()                 | Used for inter-thread communication.               |
+| wait()                      | Causes the current thread to wait until notified.  |
+| wait(long timeout)          | Causes the current thread to wait with a timeout.  |
+| wait(long timeout, int nanos)| Causes the current thread to wait with a timeout.  |
+| finalize()                  | Called by the garbage collector before the object |
+|                             | is garbage-collected.                             |
++-----------------------------+----------------------------------------------------+
+
+
+
+
+
+
+
+
+
+===========================================
+3. What is diamond problem in inheritence?
+==========================================
+       A
+      / \
+     B   C
+      \ /
+       D
+
+
+Class A is a common ancestor.
+Classes B and C both inherit from A.
+Class D inherits from both B and C.
+
+class A {
+    void someMethod() {
+        System.out.println("Class A");
+    }
+}
+
+class B extends A {
+    void someMethod() {
+        System.out.println("Class B");
+    }
+}
+
+class C extends A {
+    void someMethod() {
+        System.out.println("Class C");
+    }
+}
+
+class D extends B, C { // This is not allowed in Java for classes
+    // ...
+}
+
+
+
+--------------------------------------------------------------------------------------------------
+interface A {
+    void someMethod();
+}
+
+class B implements A {
+    public void someMethod() {
+        System.out.println("Class B");
+    }
+}
+
+class C implements A {
+    public void someMethod() {
+        System.out.println("Class C");
+    }
+}
+
+class D implements B, C {
+    public void someMethod() {
+        // You can explicitly call B's or C's implementation
+        B.super.someMethod(); // Call B's implementation
+        C.super.someMethod(); // Call C's implementation
+    }
+}
+--------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+4. Difference between Interface & Abstraction?
+==============================================
+1) Abstract class can have abstract and non-abstract methods.
+
+2) Abstract class doesn't support multiple inheritance.
+
+3) Abstract class can have final, non-final, static and non-static variables.
+
+4) Abstract class can provide the implementation of interface.
+
+5) The abstract keyword is used to declare abstract class.
+
+6) An abstract class can extend another Java class and implement multiple Java interfaces.
+
+7) An abstract class can be extended using keyword "extends".
+
+8) A Java abstract class can have class members like private, protected, etc.
+
+9)Example:
+public abstract class Shape{
+public abstract void draw();
+}
+
+
+1) Abstract class can have abstract and non-abstract methods.
+------------------------------------------------------------
+public abstract class Shape {
+    // Abstract method
+    public abstract void draw();
+    
+    // Non-abstract method
+    public void resize() {
+        System.out.println("Resizing shape");
+    }
+}
+
+2) Abstract class doesn't support multiple inheritance.
+--------------------------------------------------------
+This statement is correct. In Java, a class cannot extend more than one class.
+
+3) Abstract class can have final, non-final, static and non-static variables.
+-----------------------------------------------------------------------------
+public abstract class Shape {
+    // Final variable
+    public final int sides = 0;
+    
+    // Non-final variable
+    public int perimeter;
+    
+    // Static variable
+    public static String color = "Red";
+    
+    // Non-static variable
+    private String name;
+}
+
+
+4) Abstract class can provide the implementation of interface.
+---------------------------------------------------------------
+interface Drawable {
+    void draw();
+}
+
+public abstract class Shape implements Drawable {
+    // Implementation of the draw method from the interface
+    public void draw() {
+        System.out.println("Drawing shape");
+    }
+}
+
+
+5) The abstract keyword is used to declare abstract class.
+---------------------------------------------------------
+public abstract class Shape {
+    // Class definition
+}
+
+
+6) An abstract class can extend another Java class and implement multiple Java interfaces.
+------------------------------------------------------------------------------------------
+interface Drawable {
+    void draw();
+}
+
+class Figure {
+    // Class definition
+}
+
+public abstract class Shape extends Figure implements Drawable {
+    // Class definition
+}
+
+
+
+7) An abstract class can be extended using keyword "extends".
+------------------------------------------------------------
+class Figure {
+    // Class definition
+}
+public abstract class Shape extends Figure
+
+
+
+
+
+8) A Java abstract class can have class members like private, protected, etc.
+-----------------------------------------------------------------------------
+public abstract class Shape {
+    // Private member
+    private String name;
+    
+    // Protected member
+    protected int sides;
+    
+    // Public member
+    public abstract void draw();
+}
+
+OR
+
+public abstract class Shape {
+    // Public member
+    public String publicField;
+
+    // Protected member
+    protected int protectedField;
+
+    // Default (package-private) member
+    double defaultField;
+
+    // Private member
+    private boolean privateField;
+
+    // Abstract method
+    public abstract void draw();
+
+    // Concrete method
+    public void resize() {
+        System.out.println("Resizing shape");
+    }
+}
+
+
+
+
+
+
+iNTERFACE
+---------
+01]Interface can have only abstract methods. Since Java 8, it can have default and static methods also.
+
+02]Interface supports multiple inheritance.
+
+03]Interface has only static and final variables.
+
+04]Interface can't provide the implementation of abstract class.
+
+05]The interface keyword is used to declare interface.
+
+06]An interface can extend another Java interface only.
+
+07]An interface can be implemented using keyword "implements".
+
+08]Members of a Java interface are public by default.
+
+Example:
+public interface Drawable{
+void draw();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+5. Hashmap internal working?
+6. Explain Internal flow of ArrayList
+7. Explain about Method overriding & method overloading?
+8. Explain @Authoriad,@Qualifier?
+9. What is Dependency injection?
+10. Singleton design pattern -singleton class code?
+11. How we can achieve obstraction?
+12. what is deadlock in multithreading?
+13. Explain about Thread life cycle
+14. Can we create immutable object?
+-----------------------------------
+Yes
+
+01]Make the class final
+
+02]Make all fields private and final: 
+
+03]Provide no mutator methods:
+
+04]Ensure that mutable components are defensively copied
+
+
+// Declare the class as final to prevent it from being subclassed
+public final class ImmutablePerson {
+
+    // Declare private and final fields to ensure immutability
+    private final String name;
+    private final int age;
+
+    // Constructor to initialize the immutable object
+    public ImmutablePerson(String name, int age) {
+        // Assign values to the final fields in the constructor
+        this.name = name;
+        this.age = age;
+    }
+
+    // Provide only getters for accessing the fields, no setters
+
+    // Getter method for the 'name' field
+    public String getName() {
+        return name;
+    }
+
+    // Getter method for the 'age' field
+    public int getAge() {
+        return age;
+    }
+}
+
+
+
+
+
+
+
+
+
+15. Explain static polymorphysim & dynamic polymorphysim?		
+=========================================================
+
+Static Polymorphism (Compile-Time Polymorphism):			==> METHOD OVERLOADING
+public class StaticPolymorphism {
+    // Method Overloading
+    public int add(int a, int b) {
+        return a + b;
+    }
+
+    public double add(double a, double b) {
+        return a + b;
+    }
+}
+
+
+Key Characteristics:
+--------------------
+Method overloading is a form of static polymorphism.
+Determined at compile time.
+Also applies to operators (e.g., + for different types).
+
+
+
+Dynamic Polymorphism (Runtime Polymorphism):				==> METHOD OVERRIDING
+--------------------------------------------
+
+// Superclass
+class Animal {
+    public void makeSound() {
+        System.out.println("Some generic sound");
+    }
+}
+
+// Subclass
+class Dog extends Animal {
+    // Method overriding
+    public void makeSound() {
+        System.out.println("Bark");
+    }
+}
+Key Characteristics:
+--------------------
+Method overriding is a form of dynamic polymorphism.
+
+Determined at runtime.
+
+Relies on the use of inheritance and method overriding.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+16. What is the use of static?
+17. What is data inconsistancy problem?
+18. Differences between List & Set?
+19. Explain about Bean lifecycle
+20. What is Ioc?
+21. What is dependency injection?
+22. what are different types of dependency injections?
+23. What are the different types of bean scopes in spring
+24. what is the use of @Component scan?
+	            @Configuration?
+		    @Enable auto configuration?
+25. Explain about @spring boot application?
+26. Differences between setter injection and constructor injection?
+27. Explain architecture of microservices?
+28. Explain spring boot application internal flow?
+29. What is Actuator in spring boot
+30. Difference between west controller and controller?
+31. Whar are different HTTP methods?
+32. Differnces between put and post method?
+33. Explain about swagger?
+--------------------------
+
+
+Install Swagger Editor:
+------------------------
+
+Visit the Swagger Editor in your web browser.
+
+Write or paste your Swagger/OpenAPI Specification in either JSON or YAML format.
+
+
+Define API Endpoints:
+---------------------
+
+Define your API endpoints, specifying details such as 
+path, 
+HTTP methods (GET, POST, etc.), 
+request/response formats, 
+and parameters.
+
+
+Document Request and Response Formats:
+--------------------------------------
+
+Describe the expected format of request payloads and the structure of response payloads. Specify data types, constraints, and any required headers.
+
+Add Descriptions and Examples:
+--------------------------------------
+
+Add descriptive information to your API, including summaries, descriptions, and examples for each endpoint. This information will be visible in the generated documentation.
+
+
+Use Swagger UI for Interactive Documentation:
+---------------------------------------------
+
+Click on the "Preview" or "Swagger UI" tab in the Swagger Editor to view an interactive documentation of your API.
+Swagger UI allows you to explore and test your API directly from the documentation.
+
+
+Validate Your Specification:
+--------------------------------------
+
+Swagger Editor provides real-time validation. Ensure that your Swagger Specification is free of errors by checking for any validation messages.
+
+
+Generate Server Stubs or Client SDKs (Optional):
+------------------------------------------------
+
+If needed, you can use Swagger Codegen to generate server stubs or client SDKs in your preferred programming language.
+
+
+
+Store Your Specification (Optional):
+--------------------------------------
+
+Consider saving your Swagger Specification to a file or using a version control system to track changes over time.
+
+
+Explore Swagger Hub (Optional):
+--------------------------------------
+
+If you are working on a collaborative project, you might want to explore Swagger Hub for team collaboration, version control, and additional features.
+
+
+Integrate Swagger into Your Development Workflow:
+-------------------------------------------------
+Incorporate Swagger into your API development workflow. Update the Swagger Specification as your API evolves, and use Swagger UI for testing and validation.
+
+
+
+
+34. How can you apply spring security to the application?
+35. Explain about O-Auth 2 security?
+-----------------------------------
+OAuth 2.0 (Open Authorization 2.0) is an authorization framework that enables third-party applications
+
+to obtain limited access to a user's resources without exposing their credentials. 
+
+OAuth 2.0 is widely used for securing APIs,
+
+enabling secure access to resources on behalf of users.
+
+
+
+Roles:
+=======
+
+Resource Owner: 
+--------------
+The entity that owns the resources being protected. This is usually the end-user.
+
+
+Client:
+-------
+ The application requesting access to the resources. This could be a web application, mobile app, or other types of clients.
+
+
+Authorization Server:
+---------------------
+
+ The server responsible for authenticating the user and issuing access tokens after obtaining authorization.
+
+
+Resource Server:
+----------------
+
+ The server hosting the protected resources. It verifies access tokens and serves the requested resources.
+
+
+ Authorization Grant Types:
+ ==========================
+ OAuth 2.0 defines multiple grant types, each suited for different use cases:
+
+Authorization Code Grant:
+------------------------
+Used by web applications where the client can securely store a client secret.
+
+Implicit Grant: 
+---------------
+Intended for clients implemented in a browser using a scripting language, where the client cannot protect a client secret.
+Client Credentials Grant:
+------------------------
+ Used for machine-to-machine authentication where the client is the resource owner.
+
+Resource Owner Password Credentials Grant:
+------------------------------------------
+ Allows the client to exchange the user's credentials for an access token.
+
+
+ Authorization Flow:
+ ===================
+ The typical OAuth 2.0 flow involves the following steps:
+The client requests authorization from the resource owner.
+The resource owner authenticates and grants permission.
+The authorization server issues an authorization code.
+The client exchanges the authorization code for an access token.
+The client uses the access token to access protected resources on the resource server.
+
+
+
+
+
+
+
+
+
+
+36. How we can handle the exceptions?
+37. Differences between HashSet and HashMap?
+38. Differences between ArrayList and LinkedList?
+39. Differences between Comparable and Comparator?
+40. What are the java 8 features?
+41. What is the use of lamda expressions?
+42. What is funtional interface?
+43. Differences between funtion and predicate?
+44. Explain about streams?
+45. Differences between stream api and streams?
+================================================
+Java I/O Streams:
+=================
+The traditional Java I/O streams, such as InputStream and OutputStream for reading and writing bytes, 
+
+and Reader and Writer for reading and writing characters.
+
+
+Used for reading and writing raw bytes or characters from/to a source or destination (e.g., files, network sockets).
+
+Mainly focused on I/O operations.
+
+Has been a part of Java since its early versions.
+
+Example: InputStream, OutputStream, FileInputStream, FileOutputStream, etc.
+
+
+
+
+
+46. Differences between string, string buffer and string builder?
+
+
+
+47. What is string constant pool?
+
+
+48. What is reflection in java?
+
+
+
+
+49. What is cloning in java?
+============================
+Cloneable Interface:
+
+public class MyClass implements Cloneable {
+    // Fields and methods
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
+}
+
+
+
+50. Write a test case to saveEmployee by using mockito.
+===============================================================
+import static org.mockito.Mockito.*;
+
+import org.junit.jupiter.api.Test;
+
+public class EmployeeServiceTest {
+
+    @Test
+    public void testSaveEmployee() {
+        // Create a mock for the repository
+        EmployeeRepository employeeRepositoryMock = mock(EmployeeRepository.class);
+
+        // Create an instance of the service and inject the mock repository
+        EmployeeService employeeService = new EmployeeService(employeeRepositoryMock);
+
+        // Create an employee to save
+        Employee employeeToSave = new Employee("John Doe", "john@example.com");
+
+        // Call the method to save the employee
+        employeeService.saveEmployee(employeeToSave);
+
+        // Verify that the saveEmployee method of the repository was called with the correct argument
+        verify(employeeRepositoryMock, times(1)).saveEmployee(employeeToSave);
+
+        // Optionally, you can also verify other interactions or conditions based on your requirements
+        // For example, you might want to verify that certain methods were not called or called a specific number of times.
+        // Example: verify(employeeRepositoryMock, never()).deleteEmployee(any());
+    }
+}
+
+

@@ -1,0 +1,316 @@
+INCEDO INTERVIEW QUESTIONS
+==========================
+1. How one microservice can communicate with other microservice?
+2. What gateway did you used?
+3. What Discovery Pattern did you used?
+4. Explain about Eureka Design Pattern
+5. what is Profiles in Spring Boot?
+6. Write controller class for User
+7. Write repositry for user
+8. What is the difference between throw and throws?
+
+
+9. Write a Java8 Program to find how many time each element was repeated and sort the object by value in descending order.(With out using stream filter method).
+Input: ["cat", "dog", "cat", "ant", "cow", "cow", "rat", "cow"]
+
+10. Write a java program that reorders the digits of each numerical element in an array based on descending order.
+Input: [515, 341, 98]
+Descending order  -> [551, 431, 98]
+
+
+1. What is the superclass of all classes in java?
+2. What are the methods in object class?
+3. What is diamond problem in inheritence?
+4. Difference between Interface & Abstraction?
+5. Hashmap internal working?
+6. Explain Internal flow of ArrayList
+7. Explain about Method overriding & method overloading?
+8. Explain @Authoriad,@Qualifier?
+9. What is Dependency injection?
+10. Singleton design pattern -singleton class code?
+11. How we can achieve obstraction?
+12. what is deadlock in multithreading?
+13. Explain about Thread life cycle
+14. Can we create immutable object?
+15. Explain static polymorphysim & dynamic polymorphysim?
+16. What is the use of static?
+17. What is data inconsistancy problem?
+18. Differences between List & Set?
+19. Explain about Bean lifecycle
+20. What is Ioc?
+21. What is dependency injection?
+22. what are different types of dependency injections?
+23. What are the different types of bean scopes in spring
+24. what is the use of @Component scan?
+	            @Configuration?
+		    @Enable auto configuration?
+25. Explain about @spring boot application?
+26. Differences between setter injection and constructor injection?
+27. Explain architecture of microservices?
+28. Explain spring boot application internal flow?
+29. What is Actuator in spring boot
+30. Difference between west controller and controller?
+31. Whar are different HTTP methods?
+32. Differnces between put and post method?
+33. Explain about swagger?
+34. How can you apply spring security to the application?
+35. Explain about O-Auth 2 security?
+36. How we can handle the exceptions?
+37. Differences between HashSet and HashMap?
+38. Differences between ArrayList and LinkedList?
+39. Differences between Comparable and Comparator?
+40. What are the java 8 features?
+41. What is the use of lamda expressions?
+42. What is funtional interface?
+43. Differences between funtion and predicate?
+44. Explain about streams?
+45. Differences between stream api and streams?
+46. Differences between string, string buffer and string builder?
+47. What is string constant pool?
+48. What is reflection in java?
+49. What is cloning in java?
+50. Write a test case to saveEmployee by using mockito.
+
+
+
+L1
+===
+Differences b/w hashtable and concurrent hashmap
+Differences b/w load and get methods
+Differences b/w abstraction and encapsulation
+How you implement abstraction and encapsulation in your project?
+What is immutability? How you create custom immutable class?
+What is dependency injection? What are different types of dependency Injections?
+What is Optional class?
+When we use @Autowired how dependency will be injected?
+What is method overloading and method overriding?
+
+Java Program to Create An Immutable Class
+
+
+
+
+App Archid
+==========
+1. What is Dependency Injection?
+
+2. What is autowiring?
+
+3. What are the different Scopes in Spring?
+
+4. What is Application Context?
+
+5. What are the Named Queries?
+
+6. How you choose the Collection?
+
+7. On what collection classes did you worked on?
+
+8. Explain the ArrayList and HasMap classes?
+
+9. What are the Design Patterns you worked on?
+
+10. What is mutable and immutable classes in Java?
+
+11. What are the differences between String and StringBuffer?
+
+12. How we can make a class as Singleton class in Java?
+
+13. What is Synchronization in Java?
+
+14.Write a Program to Print the common even numbers from the two Arrays given below:
+
+    a = [ 10, 3, 12, 5, 9, 6 ]
+    b = [ 6, 2, 10, 12, 1, 7 ]
+
+for(int i=0;i<length();i++){
+for(int j=i+1;j<length();j++){
+
+if(a[i%2==0]==a[j%2==0){
+int temp=a[j];
+a[j]=a[i];
+a[j]=temp;
+
+SOP(a[j]);
+
+
+Accenture
+=========
+1. Differences b/w throws and throw keywords
+
+2. Differences b/w PutMapping and PatchMapping
+
+3. Differences b/w Spring and SpringBoot
+
+4. Differences b/w Collections and Streams
+
+5. What are the methods available in the Restful services?
+
+6. What are the thread safe collections in java?
+
+7. How did you handled the exception in your project?
+
+8. How you can customize the Bad Request
+
+9. What is Dead lock? and what are the conditions for Dead lock?
+
+10. Explain about notify() and notifyAll() methods
+
+11. Explain about yield() method?
+
+12. What is Recursion in java?
+
+13. Howmany minimum tables required for OneToMany and ManyToOne relationship?
+
+14. How can we create an immutable class? Write code for that
+
+15. Can we override static methods?
+
+16. What is method overloading and method over riding?
+
+17. Explain about Singleton class and write code for that
+
+18. Write a program for finding the even numbers without using modulo division
+
+MONOCEPT
+========
+1. Explain about Architecture of your Project?
+
+2. Which Design Patterns did you used in your project?
+
+3. How you provided the security for your Application?
+
+4. What is the difference between Access Token and Refresh Token?
+
+5. Explain about the mutability and immutability
+
+6. How we can create an immutable class?
+
+7. While you are reviewing the PR's what you observe rather the codings standard?
+
+8. How you restrict the url with the same credentials from two different systems?
+9. How you resolve production issues like network latency?
+10. Write a query to get the 3rd highest salary of an employee from the below tables
+
+EMPLOYEE
+EMPLOYEEID NAME ADDRESS
+ 
+EMPLOYEE DETAILS
+EMPLOYEEID SALARY POST
+
+
+COGNIZANT
+=========
+1.What is the object class?
+2.What are the methods of object class?
+3.Clone() of object class performance shallow copy or deep copy?
+4.What is the difference between shallow copy and deep copy.
+5.How you perform the memory leakage in the project?
+6.What are the memory references in java?
+7.What is immutability?
+8.Suppose in project iam continously required to update the bytes of streams. string will be good option or not?
+9.What is the concurrent modification exception?
+10.In order to work on the map suppose on the concurrent class like custom class which are the methods that we have to implement?
+11.What are the java 8 features?
+12.What is the use of static and default methods?
+13.Why spring is lazy?
+14.How can you create the project in spring boot?
+15.Spring contains auto enable feature. what is the exact meaning of it? and example
+16.What are the difference between @Service, @Repository, @Component annotations.
+17.Instead of @Service annotation can we use @Component annotation?
+18.What is Actuator in spring boot?
+19.How can we change the port? what is the property to change the port?
+20.What are the possible sources of external configuration?
+21.What is the static block? where it is stored?
+22.Static block calls first or constructor calls first?
+23.What is heap memory? can we increase heap memory allocated for application?
+24.For an example, Employee class has properties like employye id,employee name,age,salary.employee object contains 100 records.
+those are stored in an ArrayList object. From this ArrayList object we need a seperate ArrayList object which consists of 
+employees who are having age greater than 30. For this write a code.
+
+
+
+
+
+Differences b/w Comparable and Comparator
+What is the purpose of Optional class?
+What is flatmap?
+Employee class has 100 objects with fields as id, name, location. Filter the Employees based on perticular location
+Explain about Singleton class. Why should we implement Clonable interface?
+
+
+L2
+===
+1.What is Optional Class?
+2.What is Callable?
+3.What is the return type of call()?
+4.What is the return type of run()?
+5.What is the co-relation between Functional interface and Lamda Expression?
+6.Why there is only one method in Functional interface?
+7.What is the use of Lamda Expression?
+8.What is the load factor of ArrayList?
+9.What is the initial capacity of ArrayList?
+10.What are the difference between ArrayList and Vector?
+11.What is HashSet? Where we use HashSet?
+12.What is Immutability? How can we create custom Immutable class?
+13.What is hibernate?
+14.What is ORM?
+15.What is Diaelectic?
+16.What is the difference between Collections and Collection?
+17.What is dependency injection? How many types are there?
+18.What are the different Scopes in Spring?
+19.What is the difference between save() and saveUpdate() methods?
+20.What is Serialization? What is ssid?
+21.What is transient?
+22.What is iterable?
+23.Differences between StringBuilder and StringBuffer?
+24.What is selfjoin?
+25.What is Stream API?
+
+
+
+
+
+INFOSYS
+=======
+
+What are the Annotations did you used in SpringBoot?
+Differences b/w final, finally and finalize()
+In the catch block if there is return statement, then is finally block will execute?
+Explain about OOPS concepts in Java
+Inheritance is the example of method over loading or method overriding?
+What is method over loading and method over riding?
+When we will get ConcurrentModificationException occurs?
+What is CopyWriteOnArrayList?
+What is Serialization?
+Explain about JpaRepository
+If we want to send a zip file to the database, then which annotation should be used?
+Explain about Microservices
+If we need to change the server port, then how you will change it?
+What are class loaders?
+What is singleton class? How can we break singleton class 
+How many ways to create an object?
+
+
+
+
+
+
+
+
+
+
+
+
+Difference b/w @RequestParam and @PathVariable
+Differences b/w Comparable and Comparator
+Differences b/w Consumer and Supplier 
+what is the method in Consumer?
+what are the different scopes in Spring 
+Expalin about Spring Security
+What is early loading and lazy loading?
+How to make the object as early loading?
+How do you configure with the data base to the application?
+How do you validate the properties?
+
+

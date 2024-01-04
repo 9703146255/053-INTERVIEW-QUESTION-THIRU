@@ -1,0 +1,719 @@
+Tell me about yourself
+Tell me about your current project
+What is your  project domain 
+Latest version of java in the market sep19 2023
+Can you explain latest features of java 1.8
+How to convert list of employees into a map by using streams
+Can we write a two main methods in a class
+What is try with resourses
+How do we handle exceptions in hava
+Internal working of hashmap
+How to increase the size of hashmap
+Difference between spring and spring boot
+Latest version of spring boot
+What are the property's we need to configure in property file
+How do we maintain profiles 
+How we can provide security to our applications by using spring boot
+What is DCL command in mysql
+How to fetch second Max salary 
+What is the sequence
+What is synonym
+
+============================================================
+Latest version of java in the market 
+============================================================
+JDK 21 ==> sep19 2023
+
+
+============================================================
+Can you explain latest features of java 1.8
+============================================================
+
+
+
+============================================================
+How to convert list of employees into a map by using streams
+============================================================
+package com.thiru.streamsAPI;
+
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+public class No01ConvListEmpToMap {
+
+	private int employeeId;
+	private String employeeName;
+
+	public int getEmployeeId() {
+		return employeeId;
+	}
+
+	public void setEmployeeId(int employeeId) {
+		this.employeeId = employeeId;
+	}
+
+	public String getEmployeeName() {
+		return employeeName;
+	}
+
+	public void setEmployeeName(String employeeName) {
+		this.employeeName = employeeName;
+	}
+
+	public No01ConvListEmpToMap(int employeeId, String employeeName) {
+
+		this.employeeId = employeeId;
+		this.employeeName = employeeName;
+	}
+
+	@Override
+	public String toString() {
+		return "No01ConvListEmpToMap [employeeId=" + employeeId + ", employeeName=" + employeeName + "]";
+	}
+
+	private static List<No01ConvListEmpToMap> getAllEmps() {
+		return List.of(new No01ConvListEmpToMap(1, "John"), new No01ConvListEmpToMap(2, "Jane"),
+				new No01ConvListEmpToMap(3, "Bob"));
+
+	}
+
+	public static void main(String[] args) {
+		List<No01ConvListEmpToMap> allEmps = getAllEmps();
+
+		Map<Integer, No01ConvListEmpToMap> collect = allEmps.stream()
+				.collect(Collectors.toMap(No01ConvListEmpToMap::getEmployeeId, emp -> emp));
+
+		System.out.println(collect);
+
+	}
+
+}
+
+
+============================================================
+Can we write a two main methods in a class
+============================================================
+public class MyClass {
+    public static void main(String[] args) {
+        System.out.println("Main method 1");
+    }
+
+    public static void main(String arg) {
+        System.out.println("Main method 2");
+    }
+}
+
+
+In this example, both main methods are syntactically correct, but when you run the program, only the first main method (public static void main(String[] args)) will be executed by default.
+============================================================
+What is try with resourses
+============================================================
+In Java, the "try-with-resources" statement is a feature introduced in Java 7X to simplify resource management, such as closing files, sockets, or database connections. It ensures that each resource declared within the parentheses of the try statement is closed properly when the try block finishes, either normally or due to an exception.
+
+
+File I/O with BufferedReader and BufferedWriter:
+------------------------------------------------
+ try (
+            BufferedReader reader = new BufferedReader(new FileReader("input.txt"));
+            BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt"))
+        )
+
+
+Database Connection:
+--------------------
+try (
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydatabase", "user", "password");
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO mytable (column1, column2) VALUES (?, ?)")
+     )
+Socket I/O:
+----------
+ ServerSocket serverSocket = new ServerSocket(8080);
+ Socket clientSocket = serverSocket.accept()
+
+
+
+
+
+============================================================
+How do we handle exceptions in hava
+============================================================
+Exception handling in Java is done using the try, catch, finally, 
+and optionally throw and throws keywords. 
+
+Throwing Exceptions:
+--------------------
+You can use the throw keyword to throw an exception explicitly.
+
+
+throw new ExceptionType("This is an error message");
+
+
+
+Catching Exceptions:
+-------------------
+You use a try block to enclose the code that might throw an exception.
+
+You use one or more catch blocks to catch and handle specific exceptions.
+
+
+try {
+    // Code that may throw an exception
+} catch (ExceptionType1 e1) {
+    // Handle exception of type ExceptionType1
+} catch (ExceptionType2 e2) {
+    // Handle exception of type ExceptionType2
+} finally {
+    // Optional: Code that will always execute, whether an exception occurred or not
+}
+
+Handling Multiple Exceptions (Java 7 and later):
+-----------------------------------------------
+You can catch multiple exceptions in a single catch block using a pipe | 
+
+try {
+    // Code that may throw an exception
+} catch (ExceptionType1 | ExceptionType2 e) {
+    // Handle either ExceptionType1 or ExceptionType2
+}
+
+The finally Block:
+------------------
+The finally block contains code that will always be executed, whether an exception occurred or not. It's optional, but commonly used for cleanup tasks.
+
+
+
+
+
+
+
+
+
+============================================================
+Internal working of hashmap
+============================================================
+How to increase the size of hashmap
+============================================================
+Difference between spring and spring boot
+============================================================
+Latest version of spring boot
+============================================================
+What are the property's we need to configure in property file
+============================================================
+
+
+1]	Spring Boot Application Settings:
+
+2]	Datasource Configuration (if using a database):
+
+3]	Logging Configuration:
+
+4]	Thymeleaf (if using Thymeleaf for templates):
+
+5]	Hibernate and JPA (if using Hibernate for ORM):
+
+6]	Security (if using Spring Security):
+
+7]	External Configuration:
+
+8]	Mail Configuration (if sending emails):
+
+9]	Custom Application Properties:
+
+
+
+
+Spring Boot Application Settings:
+--------------------------------
+
+spring.application.name: 										The name of the application.
+
+server.port: 													The port on which the embedded web server will run.
+
+server.servlet.context-path: 									The context path for the application.
+
+server.error.whitelabel.enabled: 								Set to false to disable the default error page.
+
+
+
+
+Datasource Configuration (if using a database):
+-----------------------------------------------
+
+spring.datasource.url: 											JDBC URL of the database.(jdbc:mysql://localhost:3306/sbms36)
+
+spring.datasource.username: 									Database username.
+
+spring.datasource.password: 									Database password.
+
+spring.datasource.driver-class-name: 							JDBC driver class name.(com.mysql.cj.jdbc.Driver)
+
+
+Logging Configuration:
+----------------------
+
+logging.level.*: 												Set the logging level for specific packages or classes.
+
+logging.file: 													Log file name.
+
+logging.path: 													Log file location.
+
+
+
+Thymeleaf (if using Thymeleaf for templates):
+---------------------------------------------
+
+spring.thymeleaf.prefix: 										Thymeleaf template prefix.
+
+spring.thymeleaf.suffix:										Thymeleaf template suffix.
+
+
+Hibernate and JPA (if using Hibernate for ORM):
+-----------------------------------------------
+
+spring.jpa.show-sql: 											Enable or disable SQL logging.
+
+spring.jpa.hibernate.ddl-auto: 									DDL mode (create, update, validate).
+
+spring.jpa.properties.*: 										Additional Hibernate properties.
+
+
+
+Security (if using Spring Security):
+-----------------------------------
+
+spring.security.user.name: 										Default username for basic authentication.
+
+spring.security.user.password: 									Default password for basic authentication.
+
+
+External Configuration:
+----------------------
+
+spring.config.location: 										Specify the location of external configuration files.
+
+
+
+Mail Configuration (if sending emails):
+---------------------------------------
+
+spring.mail.host: 												SMTP host.
+
+spring.mail.port: 												SMTP port.
+
+spring.mail.username: 											SMTP username.
+
+spring.mail.password: 											SMTP password.
+
+
+
+
+
+=======================================================================================================================
+
+
+
+
+
+Spirng Profiles
+===============
+to configure environemnt specific propertis in the application
+
+
+
+Custom Application Properties:
+------------------------------
+
+Define custom properties specific to your application needs.
+
+
+Profile-specific Properties:
+
+Use profiles to define "properties specific" to different environments 
+e.g., 
+
+	application-dev.properties for development, 
+	application-prod.properties for production).
+============================================================
+
+
+
+
+
+
+
+============================================================
+How do we maintain profiles 
+============================================================
+Application Properties or YAML Files:
+------------------------------------
+Create separate property or YAML files for each profile, 
+such as 
+
+		-->application-dev.properties 
+
+		-->application-prod.properties.
+
+Use the spring.profiles.active property 
+
+to specify the active profiles in your main application.properties or application.yml file.
+
+properties
+
+
+
+# application.properties
+------------------------
+spring.profiles.active=dev
+Properties specific to a profile will be loaded from the corresponding file.
+
+
+
+2. Command-Line Arguments:
+--------------------------
+
+Pass the active profiles as a command-line argument when running the application.
+
+java -jar my-application.jar --spring.profiles.active=dev
+
+
+
+3. Environment Variables:
+-------------------------
+Set the SPRING_PROFILES_ACTIVE environment variable to specify the active profiles.
+
+export SPRING_PROFILES_ACTIVE=dev
+
+java -jar my-application.jar
+
+
+4. Programmatic Configuration:
+------------------------------
+
+Use the SpringApplication.setAdditionalProfiles method to set active profiles programmatically.
+
+
+public static void main(String[] args) {
+    SpringApplication app = new SpringApplication(MyApplication.class);
+    app.setAdditionalProfiles("dev");
+    app.run(args);
+}
+
+
+
+5. Profile-Specific Beans:
+--------------------------
+Define beans with @Profile annotations to make them active only for specific profiles.
+
+@Configuration
+@Profile("dev")
+public class DevConfiguration {
+    // beans specific to the dev profile
+}
+
+
+
+6. Default Profiles:
+--------------------
+You can set a default profile by specifying it in the spring.profiles.default property.
+
+
+
+# application.properties
+------------------------
+spring.profiles.default=dev
+Example - Using Multiple Property Files:
+
+
+
+
+Create application-dev.properties for the "dev" profile:
+----------------------------------------------------------
+# application-dev.properties
+server.port=8081
+database.url=jdbc:mysql://localhost:3306/devdb
+
+
+Create application-prod.properties for the "prod" profile:properties
+--------------------------------------------------------------------
+# application-prod.properties
+server.port=8080
+database.url=jdbc:mysql://prod-server:3306/proddb
+Activate the desired profile in application.properties:properties
+
+
+# application.properties
+spring.profiles.active=dev
+When you run your application with the "dev" profile, it will use the properties from application-dev.properties. Adjust this setup based on your specific requirements and the complexity of your application. Profiles provide a flexible way to manage configuration differences across various environments
+
+
+
+
+============================================================
+How we can provide security to our applications by using spring boot
+============================================================
+1. Spring Security:
+------------------
+Add Dependency:
+
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-security</artifactId>
+</dependency>
+
+
+
+Configure Basic Authentication:
+-------------------------------
+
+@Configuration
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+            .authorizeRequests()
+                .antMatchers("/public/**").permitAll()
+                .anyRequest().authenticated()
+            .and()
+            .formLogin()
+            .and()
+            .httpBasic();
+    }
+}
+This example allows public access to URLs starting with "/public/" and requires authentication for other URLs.
+
+
+
+2. User Authentication:
+------------------------
+In-Memory Authentication:
+
+
+@Override
+protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+    auth
+        .inMemoryAuthentication()
+            .withUser("user").password("{noop}password").roles("USER")
+            .and()
+            .withUser("admin").password("{noop}admin").roles("USER", "ADMIN");
+}
+
+
+
+Database Authentication:
+-----------------------
+
+
+@Autowired
+public void configure(AuthenticationManagerBuilder auth, DataSource dataSource) throws Exception {
+    auth
+        .jdbcAuthentication()
+            .dataSource(dataSource)
+            .usersByUsernameQuery("SELECT username, password, enabled FROM users WHERE username=?")
+            .authoritiesByUsernameQuery("SELECT username, authority FROM authorities WHERE username=?");
+}
+
+
+3. OAuth2 and OpenID Connect:
+-----------------------------
+Integrate OAuth2 for External Authentication:
+Use 
+spring-boot-starter-oauth2-client and
+spring-boot-starter-oauth2-resource-server dependencies.
+Configure OAuth2 properties in application.properties or application.yml.
+
+
+
+4. Authorization:
+----------------
+
+Define roles and permissions.
+
+Use @PreAuthorize and @Secured annotations on methods.
+
+Configure method-level security using @EnableGlobalMethodSecurity.
+
+
+
+5. HTTPS and SSL:
+-----------------
+Configure your application to use HTTPS to encrypt data in transit.
+
+Obtain an SSL certificate and configure it in your application.
+
+
+6. CSRF Protection:
+-------------------
+Enable CSRF protection to prevent Cross-Site Request Forgery attacks.
+
+@Override
+protected void configure(HttpSecurity http) throws Exception {
+    http
+        .csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
+}
+
+
+
+7. Session Management:
+----------------------
+Configure session management to control session creation and handling.
+
+@Override
+protected void configure(HttpSecurity http) throws Exception {
+    http
+        .sessionManagement()
+            .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+}
+
+
+8. Content Security Policy (CSP):
+---------------------------------
+Define a Content Security Policy to mitigate XSS attacks.
+
+@Override
+protected void configure(HttpSecurity http) throws Exception {
+    http
+        .headers()
+            .contentSecurityPolicy("default-src 'self'");
+}
+
+
+9. Security Headers:
+--------------------
+Configure security headers to enhance browser security.
+
+@Override
+protected void configure(HttpSecurity http) throws Exception {
+    http
+        .headers()
+            .frameOptions().sameOrigin()  // Enable X-Frame-Options
+            .httpStrictTransportSecurity().disable()  // Disable HSTS for development
+            .cacheControl();  // Enable Cache-Control headers
+}
+
+
+
+10. Security Auditing and Monitoring:
+-------------------------------------
+Use auditing features and monitor security events.
+
+Integrate with tools like Spring Boot Actuator.
+
+
+11. Logging and Monitoring:
+--------------------------
+
+Use proper logging to capture security-related events.
+
+Integrate with centralized logging and monitoring systems.
+
+
+
+12. Dependency Scanning and Updates:
+------------------------------------
+
+Regularly scan for dependencies with known vulnerabilities.
+
+Keep dependencies up-to-date to patch security vulnerabilities.
+
+
+13. Security Best Practices:
+-----------------------------
+Follow secure coding practices.
+
+Regularly review and update security configurations.
+
+Stay informed about security updates and best practices.
+
+
+
+
+
+
+
+
+============================================================
+What is DCL command in mysql
+============================================================
+DCL stands for Data Control Language. 
+
+DCL commands are used to control access to the database, 
+
+managing privileges, and setting up security within MySQL. 
+
+
+GRANT:
+
+The GRANT command is used to give specific privileges or permissions to database users.
+
+It allows a database administrator to grant specific privileges on database objects
+
+ (such as tables, views, or procedures) to database users.
+
+The syntax is as follows:
+
+GRANT privileges ON database_name.table_name TO 'username'@'host';
+
+
+
+REVOKE:
+------
+
+The REVOKE command is used to take away or revoke specific privileges from database users.
+
+It allows a database administrator to revoke previously granted privileges.
+
+The syntax is similar to GRANT:
+-------------------------------
+REVOKE privileges ON database_name.table_name FROM 'username'@'host';
+Example:
+--------
+REVOKE SELECT, INSERT ON mydatabase.mytable FROM 'john'@'localhost';
+
+
+
+============================================================
+How to fetch second Max salary 
+============================================================
+SELECT MAX(SAL) FROM EMPLOYEE WHERE EMPSAL < SELECT MAX(EMPSAL) FROM EMPLOYEE);
+
+
+
+============================================================
+What is the sequence
+============================================================
+When you insert a new row without specifying a value for the id column,
+
+ MySQL will automatically generate the next available value:
+
+
+Create a Sequence (example in mYSQL):
+------------------------------------------
+CREATE TABLE example_table (
+    id INT AUTO_INCREMENT PRIMARY KEY, XXXXXXXXXXXXX
+    name VARCHAR(255)
+);
+
+
+INSERT INTO example_table (name) VALUES ('John Doe');
+
+
+
+
+What is synonym
+---------------
+
+
+A synonym, in the context of databases, is an "alternative name" for a "database object", 
+such as a 
+table,
+view,
+sequence,
+stored procedure. 
+Synonyms provide a way to reference an object using a different name,
+
+
+============================================================
+How to convert list of employees into a map by using streams
+============================================================

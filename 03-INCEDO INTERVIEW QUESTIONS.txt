@@ -1,0 +1,484 @@
+INCEDO INTERVIEW QUESTIONS
+==========================
+1. How one microservice can communicate with other microservice?
+2. What gateway did you used?
+3. What Discovery Pattern did you used?
+4. Explain about Eureka Design Pattern
+5. what is Profiles in Spring Boot?
+6. Write controller class for User
+7. Write repositry for user
+8. What is the difference between throw and throws?
+
+
+9. Write a Java8 Program to find how many time each element was repeated and sort the object by value in descending order.(With out using stream filter method).
+Input: ["cat", "dog", "cat", "ant", "cow", "cow", "rat", "cow"]
+
+10. Write a java program that reorders the digits of each numerical element in an array based on descending order.
+Input: [515, 341, 98]
+Descending order  -> [551, 431, 98]
+
+
+
+
+
+1. How one microservice can communicate with other microservice?
+================================================================
+01]Use RestTemplate:
+02]Fiegn cline
+03]Web client
+04]Configure Cross-Origin Resource Sharing (CORS):
+05]Expose RESTful APIs:
+
+
+
+01]Use RestTemplate:
+---------------------
+	->	In Spring Boot 1.x, you can use the RestTemplate class for making HTTP requests to other microservices.
+
+ 	->	Inject RestTemplate into your service or controller and use it to make HTTP calls.
+
+@Service
+public class ProductService {
+
+    @Autowired
+    private RestTemplate restTemplate;
+
+    public Product getProductById(Long productId) {
+        // Make a GET request to another microservice
+        ResponseEntity<Product> response = restTemplate.getForEntity(
+            "http://other-microservice/api/products/{productId}",
+            Product.class,
+            productId
+        );
+
+        // Process the response and return the result
+        return response.getBody();
+    }
+}
+
+
+02]Use Feign for Declarative REST Clients (Optional):
+----------------------------------------------------
+
+Spring Cloud also provides the Feign client, which allows you to declare REST clients using annotations.
+
+@FeignClient(name = "other-microservice")
+public interface ProductFeignClient {
+
+    @GetMapping("/api/products/{productId}")
+    Product getProductById(@PathVariable Long productId);
+}
+
+03]Expose RESTful APIs:
+-----------------------
+	->Each microservice should expose a set of RESTful APIs that other microservices can consume. 
+
+	->You can use Spring MVC annotations to define these APIs in your controllers.
+
+
+	@RestController
+@RequestMapping("/api/products")
+public class ProductController {
+
+    @GetMapping("/{productId}")
+    public ResponseEntity<Product> getProduct(@PathVariable Long productId) {
+        // Logic to retrieve product by ID
+        // ...
+    }
+
+    // Other API endpoints
+}
+
+
+
+
+
+04]Configure Cross-Origin Resource Sharing (CORS):
+--------------------------------------------------
+If your microservices run on different domains, you may need to configure Cross-Origin Resource Sharing (CORS) to allow requests from one microservice to another.
+
+@Configuration
+public class CorsConfig extends WebMvcConfigurerAdapter {
+
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/api/**")
+            .allowedOrigins("http://allowed-origin.com")
+            .allowedMethods("GET", "POST", "PUT", "DELETE")
+            .allowCredentials(true);
+    }
+}
+
+
+05]Expose RESTful APIs:
+----------------------
+Each microservice should expose a set of RESTful APIs that other microservices can consume. 
+
+You can use Spring MVC annotations to define these APIs in your controllers.
+
+@RestController
+@RequestMapping("/api/products")
+public class ProductController {
+
+    @GetMapping("/{productId}")
+    public ResponseEntity<Product> getProduct(@PathVariable Long productId) {
+        // Logic to retrieve product by ID
+        // ...
+    }
+
+    // Other API endpoints
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2. What gateway did you used?
+=============================
+01]Spring Cloud Gateway:
+---------------------
+
+Spring Cloud Gateway is a more modern and flexible option for building API gateways.
+
+It is part of the Spring Cloud project and is designed to work seamlessly with Spring Boot.
+
+Provides features like routing, filtering, and load balancing.
+
+Configurable using Java code or YAML configuration.
+
+
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-gateway</artifactId>
+</dependency>
+
+02]Netflix Zuul:
+------------------
+
+Zuul is part of the Netflix OSS (Open Source Software) stack and is a popular choice for building API gateways.
+
+Integrates well with Spring Cloud and is often used in conjunction with Eureka for service discovery.
+
+Provides features like routing, filtering, and load balancing.
+
+Configurable using application properties or YAML files.
+
+
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-netflix-zuul</artifactId>
+</dependency>
+
+
+
+
+
+
+3. What Discovery Pattern did you used?
+========================================
+Discovery Pattern: 
+
+Utilize client-side discovery (e.g., with Spring Cloud Eureka) or server-side discovery (e.g., with Netflix Zuul and Eureka).
+
+
+
+
+
+
+
+
+
+
+4. Explain about Eureka Design Pattern
+===================================
+
+
+
+
+5. what is Profiles in Spring Boot?
+===================================
+=>	PROFILES ARE USED TO CONFIGURE THE ENVIRONMENT SPECIFIC CONFIGURATIONS
+
+=>  If we configure the different environments, it is easy to manage and depoloy application accross various stages of the development life cylce from development to  production
+
+=> 	LIKE DEV, SIT, UAT,PILOT, PRODUCTION
+
+
+
+01]Profile Activation:
+
+Profiles can be activated in several ways:
+------------------------------------------
+-->	Using the spring.profiles.active property in the application.properties or application.yml file.
+
+--> Setting the SPRING_PROFILES_ACTIVE environment variable.
+
+--> Using the --spring.profiles.active command-line option when running the application.
+
+
+
+
+Example in application.properties:
+----------------------------------
+spring.profiles.active=dev
+
+
+02]Profile-Specific Configuration:
+-------------------------------
+You can create profile-specific configuration files by appending the profile name to the application filename.
+
+ For example, application-dev.properties or application-prod.yml.
+
+
+
+
+
+ 03]Annotations for Beans:
+ -------------------------
+ You can use the @Profile annotation on @Bean methods to conditionally
+
+ include or exclude beans based on the active profiles.
+
+ @Configuration
+public class MyConfig {
+    @Bean
+    @Profile("dev")
+    public DataSource dataSourceForDev() {
+        // Configuration for the 'dev' profile
+        return new DevDataSource();
+    }
+
+    @Bean
+    @Profile("prod")
+    public DataSource dataSourceForProd() {
+        // Configuration for the 'prod' profile
+        return new ProdDataSource();
+    }
+}
+
+
+Conditional Annotations:
+------------------------
+Spring Boot provides annotations like @ConditionalOnProperty or @ConditionalOnClass 
+
+that allow you to conditionally include or exclude beans or configuration based on certain conditions, including active profiles.
+
+
+@Configuration
+@ConditionalOnProperty(name = "feature.enabled", havingValue = "true")
+public class MyFeatureConfig {
+    // Configuration for the 'feature.enabled' property
+}
+
+
+
+
+
+
+
+6. Write controller class for User
+===================================
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/users")
+public class UserController {
+
+    @Autowired
+    private UserService userService; // Assume you have a UserService class
+
+    // Get all users
+    @GetMapping
+    public ResponseEntity<List<User>> getAllUsers() {
+        List<User> users = userService.getAllUsers();
+        return new ResponseEntity<>(users, HttpStatus.OK);
+    }
+
+    // Get a single user by ID
+    @GetMapping("/{userId}")
+    public ResponseEntity<User> getUserById(@PathVariable Long userId) {
+        User user = userService.getUserById(userId);
+        if (user != null) {
+            return new ResponseEntity<>(user, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    // Create a new user
+    @PostMapping
+    public ResponseEntity<User> createUser(@RequestBody User user) {
+        User createdUser = userService.createUser(user);
+        return new ResponseEntity<>(createdUser, HttpStatus.CREATED);
+    }
+
+    // Update an existing user
+    @PutMapping("/{userId}")
+    public ResponseEntity<User> updateUser(@PathVariable Long userId, @RequestBody User updatedUser) {
+        User user = userService.updateUser(userId, updatedUser);
+        if (user != null) {
+            return new ResponseEntity<>(user, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    // Delete a user by ID
+    @DeleteMapping("/{userId}")
+    public ResponseEntity<Void> deleteUser(@PathVariable Long userId) {
+        if (userService.deleteUser(userId)) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+}
+
+
+
+
+
+7. Write repositry for user
+==============================
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface UserRepository extends JpaRepository<User, Long> {
+
+    // Additional query methods can be defined here based on your needs
+    // For example, finding a user by username or email
+
+    User findByUsername(String username);
+
+    User findByEmail(String email);
+
+    // Add more query methods as necessary
+}
+
+
+
+
+
+
+
+8. What is the difference between throw and throws?
+
+throw
+-----
+throw is used to throw an exception explicitly within a method or block.
+
+public void someMethod() {
+    if (someCondition) {
+        throw new SomeException("This is an exceptional condition.");
+    }
+}
+
+throws
+-------
+throws is used in method declarations to indicate the types of exceptions that the method may throw.
+
+public void someMethod() throws SomeException {
+    // Method implementation that may throw SomeException
+}
+
+
+
+public void anotherMethod() throws ExceptionType1, ExceptionType2 {
+    // Method implementation that may throw ExceptionType1 or ExceptionType2
+}
+
+
+
+
+9. Write a Java8 Program to find how many time each element was repeated and sort the object by value in descending order.(With out using stream filter method).
+Input: ["cat", "dog", "cat", "ant", "cow", "cow", "rat", "cow"]
+
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+public class ElementFrequencySort {
+
+    public static void main(String[] args) {
+        List<String> inputList = List.of("cat", "dog", "cat", "ant", "cow", "cow", "rat", "cow");
+
+        Map<String, Integer> frequencyMap = new HashMap<>();
+
+        // Count the occurrences of each element
+        for (String element : inputList) {
+            frequencyMap.put(element, frequencyMap.getOrDefault(element, 0) + 1);
+        }
+
+        // Sort the map by value in descending order
+        List<Map.Entry<String, Integer>> sortedList = frequencyMap.entrySet().stream()
+                .sorted((entry1, entry2) -> entry2.getValue().compareTo(entry1.getValue()))
+                .collect(Collectors.toList());
+
+        // Display the sorted elements and their frequencies
+        System.out.println("Element Frequencies (Sorted in Descending Order):");
+        for (Map.Entry<String, Integer> entry : sortedList) {
+            System.out.println(entry.getKey() + ": " + entry.getValue() + " times");
+        }
+    }
+}
+
+
+
+
+
+
+10. Write a java program that reorders the digits of each numerical element in an array based on descending order.
+Input: [515, 341, 98]
+Descending order  -> [551, 431, 98]
+
+
+import java.util.Arrays;
+
+public class ReorderDigitsDescending {
+
+    public static void main(String[] args) {
+        int[] inputArray = {515, 341, 98};
+
+        int[] resultArray = reorderDigitsDescending(inputArray);
+
+        System.out.println("Input Array: " + Arrays.toString(inputArray));
+        System.out.println("Descending Order: " + Arrays.toString(resultArray));
+    }
+
+    private static int[] reorderDigitsDescending(int[] array) {
+        return Arrays.stream(array)
+                .map(ReorderDigitsDescending::reorderDigits)
+                .toArray();
+    }
+
+    private static int reorderDigits(int number) {
+        char[] digits = Integer.toString(number).toCharArray();
+
+        // Sort and reverse the digits in a single step using streams
+        String reversedDigits = new StringBuilder(new String(digits))
+                .chars()
+                .mapToObj(c -> (char) c)
+                .sorted((c1, c2) -> Character.compare(c2, c1))
+                .collect(StringBuilder::new, StringBuilder::append, StringBuilder::append)
+                .toString();
+
+        return Integer.parseInt(reversedDigits);
+    }
+}

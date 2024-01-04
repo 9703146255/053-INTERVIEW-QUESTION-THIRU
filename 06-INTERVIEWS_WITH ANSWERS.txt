@@ -1,0 +1,413 @@
+WHAT ARE THE KEYCOMPONENTS OF SPRINGBOOT
+========================================
+| Component                  | Description                                                                                                      |
+|----------------------------|------------------------------------------------------------------------------------------------------------------|
+| Spring Boot Starters       | Pre-configured dependency descriptors for common use cases.                                                        |=================================================================================================================================================
+| Auto-Configuration         | Automatic setup of application components based on dependencies.                                                 |
+=================================================================================================================================================
+| Embedded Web Server        | Inclusion of an embedded web server (Tomcat, Jetty, or Undertow) for standalone application deployment.            |=================================================================================================================================================
+| Spring Boot Actuator       | Production-ready features for monitoring and managing applications, exposed through endpoints.                    |
+=================================================================================================================================================
+| Spring Boot DevTools       | Tools enhancing the development experience, including automatic restarts and live reloading.                      |
+=================================================================================================================================================
+| Spring Boot CLI            | Command-line interface for creating, running, and managing Spring Boot applications. ====================================================================================================================                              |
+| Spring Boot Annotations    | Simplifies configuration and development using annotations like `@SpringBootApplication`.                        |
+=================================================================================================================================================
+| Spring Boot Data JPA       | Integration with Spring Data JPA for simplified database operations.                                               |=================================================================================================================================================
+| Spring Boot Security       | Integration with Spring Security for authentication and authorization.                                             |=================================================================================================================================================
+| Testing Support            | Utilities and annotations for streamlined unit and integration testing.                                            |=================================================================================================================================================
+| Spring Boot Actuators      | Production-ready features like health checks, metrics, and info exposed through HTTP endpoints or JMX beans.       |=================================================================================================================================================
+
+02]IN YOUR PROJECT HOW YOUR HANDLING THE EXCEPTIONS
+====================================================
+
+01}Global Exception Handling:
+
+02}Controller-Specific Exception Handling:
+
+03}Custom Exception Classes:
+
+04}Logging:
+
+05}Custom Error Responses:
+
+	01}Global Exception Handling:  @ControllerAdvice,  @ExceptionHandler
+	=============================
+
+	Spring Boot allows you to create a global exception handler using the //@ControllerAdvice// annotation 
+
+	along with the //@ExceptionHandler annotation.Annotated classes can define methods to handle specific exceptions or generic ones, and these methods can return appropriate responses.
+
+	EX:
+
+
+		@ControllerAdvice
+public class GlobalExceptionHandler {
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<String> handleException(Exception e) {
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Something went wrong");
+    }
+
+    // Handle specific exceptions
+    @ExceptionHandler(NotFoundException.class)
+    public ResponseEntity<String> handleNotFoundException(NotFoundException e) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+    }
+}
+
+
+02}Controller-Specific Exception Handling:
+==========================================
+Controllers can handle exceptions specific to their operations using the @ExceptionHandler annotation within the controller class.
+
+
+@RestController
+public class MyController {
+
+    @GetMapping("/example")
+    public ResponseEntity<String> example() 
+    {
+        // Business logic that may throw exceptions
+        throw new CustomException("This is a custom exception");
+    }
+
+    @ExceptionHandler(CustomException.class)
+    public ResponseEntity<String> handleCustomException(CustomException e) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+    }
+}
+
+
+03}Custom Exception Classes:
+============================
+Create custom exception classes to represent different types of errors in your application. 
+These classes can extend RuntimeException or a more specific exception class.
+
+ex:
+
+
+public class CustomException extends RuntimeException 
+{
+
+    public CustomException(String message) {
+        super(message);
+    }
+}
+
+04}Logging:
+===========
+Implement logging to capture details about exceptions. Spring Boot's logging can be configured using frameworks like Logback or Log4j.
+
+@Controller
+public class MyController {
+
+    private static final Logger logger = LoggerFactory.getLogger(MyController.class);
+
+    @GetMapping("/example")
+    public ResponseEntity<String> example() {
+        try {
+            // Business logic that may throw exceptions
+            throw new CustomException("This is a custom exception");
+        } catch (CustomException e) {
+            logger.error("Exception occurred: {}", e.getMessage());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+    }
+
+
+05}Custom Error Responses:
+==========================
+
+step-1:
+=======
+public class ErrorResponse {
+
+    private String message;
+    private LocalDateTime timestamp;
+
+    // Constructors, getters, and setters
+}
+
+step-2
+=======
+
+@ControllerAdvice
+public class GlobalExceptionHandler {
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<ErrorResponse> handleException(Exception e) {
+        ErrorResponse errorResponse = new ErrorResponse("Something went wrong", LocalDateTime.now());
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResponse);
+    }
+
+    // Handle specific exceptions
+    @ExceptionHandler(NotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleNotFoundException(NotFoundException e) {
+        ErrorResponse errorResponse = new ErrorResponse(e.getMessage(), LocalDateTime.now());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
+    }
+}
+
+
+
+
+
+
+24-11-2023[TCS]
+===============
+1] HOW WE WILL CREATE A MUTABLE CLASS
+======================================
+public class MutableClass {
+    // Fields (internal state)
+    private String name;
+    private int age;
+
+    // Constructor
+    public MutableClass(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    // Getter methods
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    // Setter methods
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    // toString method for better representation
+    @Override
+    public String toString() {
+        return "MutableClass{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                '}';
+    }
+
+    public static void main(String[] args) {
+        // Creating an instance of MutableClass
+        MutableClass person = new MutableClass("John", 25);
+
+        // Displaying the initial state
+        System.out.println("Initial State: " + person);
+
+        // Modifying the state using setter methods
+        person.setName("Jane");
+        person.setAge(30);
+
+        // Displaying the modified state
+        System.out.println("Modified State: " + person);
+    }
+}
+
+
+creating a mutable class involves designing a class
+======================================================== 
+==> whose state can be modified after the object is instantiated.
+
+constructor
+setter and  getter methods
+toString
+
+==> The class has a constructor to initialize its state when an object is created.
+
+==> Getter methods (getName and getAge)      ==>  allow access/getting to the current state.
+
+==> Setter methods (setName and setAge)        ==>   allow modification/update of the internal state.
+
+==> The toString method is ==>   TO overridden to provide a meaningful representation of the object.
+
+
+
+
+1] HOW WE WILL CREATE A IMUTABLE CLASS  
+======================================
+final==>[fields,class]
+
+don't provide setter methods
+methods cannot be overriden
+===========================
+
+
+1)Make fields final:
+
+2)Make the class final:
+
+3)Don't provide setter methods:
+
+4)Ensure that methods cannot be overridden to modify state:
+
+
+Creating an immutable class in Java involves designing a class whose instances cannot be modified once they are created. The key characteristics of an immutable class are:
+
+Make fields final: Ensure that the fields of the class are final, so they can be assigned only once during object creation.
+
+Make the class final: Prevent the class from being subclassed, as subclasses might introduce mutability.
+
+Don't provide setter methods: Eliminate methods that allow modifying the state of the object after creation.
+
+Ensure that methods cannot be overridden to modify state: If there are methods that provide access to mutable objects (e.g., collections), make sure they return copies or immutable views.
+
+
+
+public final class ImmutableClass {
+    // Fields (private and final)
+    private final String name;
+    private final int age;
+
+    // Constructor to initialize the state
+    public ImmutableClass(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    // Getter methods (no setter methods)
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    // No mutator methods (no methods that modify the state)
+
+    // toString method for better representation
+    @Override
+    public String toString() {
+        return "ImmutableClass{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                '}';
+    }
+
+    public static void main(String[] args) {
+        // Creating an instance of ImmutableClass
+        ImmutableClass person = new ImmutableClass("John", 25);
+
+        // Displaying the state
+        System.out.println("Immutable State: " + person);
+    }
+}
+
+
+
+
+05-12-2023
+===========
+
+CORE JAVA
+=========
+WHAT IS POLIMORPHISM IN JAVA
+HOW CAN WE CREATE CUSTOM EXCEPTION
+
+SPRINGBOOT
+==========
+TELL ME DATA JPA 5-PREDIFINED METHODS
+
+HOW YOUR USING PAYMENT GATEWAY IN YOUR PROJECT
+
+HOW YOUR USING GOOGLE MAPS
+
+What is the difference between findById and getById
+
+What is the difference between JWT TOKEN and OAUTH2
+
+
+
+
+
+CORE JAVA
+=========
+WHAT IS POLIMORPHISM IN JAVA
+=============================
+
+
+HOW CAN WE CREATE CUSTOM EXCEPTION
+==================================
+
+SPRINGBOOT
+==========
+TELL ME DATA JPA 5-PREDIFINED METHODS
+=====================================
+
+
+HOW YOUR USING PAYMENT GATEWAY IN YOUR PROJECT
+==============================================
+There are numerous payment gateways available, 
+
+choice of a specific payment gateway depends on various factors such as 
+
+==> your location,
+
+==> the type of business, 
+
+==> and your specific requirements.
+
+
+Stripe
+
+PayPal
+
+Square
+
+Authorize.Net
+
+Braintree
+
+2Checkout (now Verifone)
+
+Adyen
+
+Worldpay
+
+Skrill
+
+WePay
+
+HOW YOUR USING GOOGLE MAPS
+==========================
+
+What is the difference between findById and getById
+===================================================
+
+
+
+
+What is the difference between JWT TOKEN and OAUTH2
+===================================================
+===========================================================================================================================================================================
+| Feature                    | JWT                                                 | OAuth 2.0                                                                              |
+|---------------------------|------------------------------------------------------|-------------------------------------------------------------------------------                                 |
+| **Purpose**               |  Token format for representing claims                | Authorization framework for delegated access                                           |
+===========================================================================================================================================================================
+| **Structure**             | Header, Payload, Signature                           | N/A (Defines how to obtain tokens)                                                     |
+===========================================================================================================================================================================
+| **Entities**              | N/A                                                 | Resource Owner, Client, Authorization Server, Resource Server                           |
+===========================================================================================================================================================================
+| **Token Type**            | Access token, identity token, etc.                   | Access Token                                                                           |
+===========================================================================================================================================================================
+| **Grant Types**           | N/A                                                 | Authorization Code, Implicit, Resource Owner Password Credentials, Client Credentials   |
+===========================================================================================================================================================================
+| **Bearer Tokens**         | Can be used as bearer tokens in OAuth 2.0            | Standardized way to represent access tokens                                            |
+===========================================================================================================================================================================
+| **Claims Representation** | Compact and self-contained JSON format               | Token format depends on the implementation (can be JWT, opaque string, etc.)           |
+===========================================================================================================================================================================
+| **Security Features**     | Provides integrity through signatures               | Security considerations are part of the framework, not the token format                 |
+===========================================================================================================================================================================
+| **Usage Scenarios**       | Used in various authentication and authorization scenarios | Primarily used for delegated authorization (obtaining access to resources on behalf of a user) |
+===========================================================================================================================================================================
+It's important to note that JWT is often used as a token format within the OAuth 2.0 framework. In OAuth 2.0, the specification defines how to obtain tokens (access tokens) and includes various grant types, while JWT is a specific token format with its own set of characteristics.
+===========================================================================================================================================================================
