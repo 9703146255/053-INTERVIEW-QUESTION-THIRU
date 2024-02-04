@@ -48,9 +48,9 @@ Note: In previous versions we have Zuul Proxy as API Gateway but now it got remo
 -> Spring Cloud Gateway we can use as API Gateway for our application
 
 
-3. What Discovery Pattern did you used?
+3. What Discovery Pattern did you used?   4. Explain about Eureka Design Pattern
 =========================================
-Service Registry
+Service Registry  
 ===================
 	TO REGSTR ALL BACKEND API
 	MANTAIN ALL SERVICE ==>BSUN(SNAMES,SURLS,SERVICES]
@@ -62,7 +62,7 @@ Service Registry
 
 	-> We can use EurekaServer as a service registry
 
-Note: EurekaServer provided by Spring Cloud Netf lix Library
+Note: EurekaServer provided by ==> Spring Cloud Netf lix Library
 
 
 
