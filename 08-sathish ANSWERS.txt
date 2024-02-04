@@ -18,6 +18,58 @@ Input: [515, 341, 98]
 Descending order  -> [551, 431, 98]
 
 
+1. How one microservice can communicate with other microservice?
+================================================================
+3 ways 
+======
+using RestTemplate [only synchronization]
+using WebClient    [both synch and asych]
+using FeighnClient [for reactive app]
+
+
+2. What gateway did you used?
+==============================
+1)API Gateway
+===============
+-> we used ApiGateway
+
+-> Api Gateway will act as an Entry point for our backend apis
+
+-> It acts as mediator between endusers and backend apis
+
+-> API Gateway contains "Filters" and "Routing"
+
+-> Filters we can use to authenticate incoming requests			FILTER		=>	[AIR]
+
+-> Routing will decide which request should go to which backend api		ROUTING		=>    WHICH REQ SHOULD GO TO WHICH BACKEND API
+
+Note: In previous versions we have Zuul Proxy as API Gateway but now it got removed from latest version of boot
+
+-> Spring Cloud Gateway we can use as API Gateway for our application
+
+
+3. What Discovery Pattern did you used?
+=========================================
+Service Registry
+===================
+	TO REGSTR ALL BACKEND API
+	MANTAIN ALL SERVICE ==>BSUN(SNAMES,SURLS,SERVICES]
+	EurekaServer ==>	service registry
+	
+	-> ServiceRegistry is used to "register" all our backend services/apis
+
+	-> Service Registry will "maintain" service status, urls ,names  , and of each service[SUN]
+
+	-> We can use EurekaServer as a service registry
+
+Note: EurekaServer provided by Spring Cloud Netf lix Library
+
+
+
+
+
+
+
 1. What is the superclass of all classes in java?
 2. What are the methods in object class?
 3. What is diamond problem in inheritence?
