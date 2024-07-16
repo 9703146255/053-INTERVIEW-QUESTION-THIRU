@@ -220,39 +220,25 @@ In hibernate, get() and load() are two methods which is used to fetch data for t
 
 
 
-Get()
-Load()
-1
-
-Basic 
-
-It  is used to fetch data from the database for the given identifier  
-
-It  is also used to fetch data from the database for the given identifier 
-
-2
-
-Null Object 
-
-It object not found for the given identifier then it will return null object 
-
-It will throw object not found exception 
-
-3
-
+Get()                                                                                     Load()
+1. It  is used to fetch data from the database for the given identifier             It  is also used to fetch data from the database for the given identifier 
+2.It object not found for the given identifier then it will return null object      It will throw object not found exception 
+3.It returns fully initialized object so this method eager load the object          It always returns proxy object so this method is lazy load the object
+4.It is slower than load() because it return fully initialized object               It is slightly faster.
+  which impact the performance of the application 
 
 
 Lazy or Eager loading 
 
-It returns fully initialized object so this method eager load the object  
+  
 
-It always returns proxy object so this method is lazy load the object  
+  
 
 4
 
 Performance 
 
-It is slower than load() because it return fully initialized object which impact the performance of the application 
+
 
 It is slightly faster.
 
